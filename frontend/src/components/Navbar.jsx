@@ -48,8 +48,9 @@ const Navbar = ({ cart }) => {
                                 />
                             </svg>
                         </button>
-                        <div className="font-bold text-2xl text-accent font-serif">
-                            Furnitures
+                        <div className="font-bold text-2xl text-accent font-serif flex flex-col justify-center items-center">
+                            <span className="">Furnitures</span>
+                            <span className="text-lg">home</span>
                         </div>
                     </div>
                     <div class="space-x-8 txt-lg font-medium hidden md:block">
@@ -79,7 +80,7 @@ const Navbar = ({ cart }) => {
                         </a>
                     </div>
 
-                    <div className="flex space-x-8">
+                    <div className="flex space-x-4 lg:space-x-8 ">
                         <div className="relative">
                             <Link to="/viewcart">
                                 <FaCartPlus className="size-5" />

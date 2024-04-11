@@ -6,7 +6,7 @@ const App = () => {
         <div class="bg-zinc-200 ">
             <div class="container py-12 flex items-center  gap-6 flex-col md:flex-row">
                 <div class="flex-1">
-                    <p class="text-6xl text-accent font-bold capitalize font-serif">
+                    <p class="text-4xl lg:text-6xl text-accent font-bold capitalize font-serif">
                         best furnitures
                         <br />
                         at best price
