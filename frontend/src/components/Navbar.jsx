@@ -50,7 +50,7 @@ const Navbar = ({ cart }) => {
                         </button>
                         <div className="font-bold text-2xl text-accent font-serif flex flex-col justify-center items-center">
                             <span className="">Furnitures</span>
-                            <span className="text-lg">home</span>
+                            <span className="text-lg">Shop</span>
                         </div>
                     </div>
                     <div class="space-x-8 txt-lg font-medium hidden md:block">
