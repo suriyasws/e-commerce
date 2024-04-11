@@ -52,7 +52,7 @@ const Navbar = ({ cart }) => {
                             Furnitures
                         </div>
                     </div>
-                    <div class="space-x-4 hidden md:block">
+                    <div class="space-x-8 txt-lg font-medium hidden md:block">
                         <a
                             href=""
                             class=""
@@ -79,12 +79,12 @@ const Navbar = ({ cart }) => {
                         </a>
                     </div>
 
-                    <div className="flex space-x-4">
+                    <div className="flex space-x-8">
                         <div className="relative">
                             <Link to="/viewcart">
                                 <FaCartPlus className="size-5" />
                             </Link>
-                            <span className=" absolute  -top-1/2 -right-1/2  bg-green-400 rounded-full flex items-center justify-center text-sm text-center size-5">
+                            <span className=" absolute  -top-1/2 -right-1/2  bg-accent text-white rounded-full flex items-center justify-center text-sm text-center size-5">
                                 {
                                     cart.length
                                 }

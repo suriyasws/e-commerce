@@ -10,7 +10,7 @@ const App = () => {
   const[cart,setCart]=useState([]);
   
   return (
-    <div className='bg-bg'>
+    <div className='text-[18px]'>
 
       
       <BrowserRouter>

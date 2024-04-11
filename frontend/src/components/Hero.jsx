@@ -5,13 +5,14 @@ const App = () => {
     return (
         <div class="bg-zinc-200 ">
             <div class="container py-12 flex items-center  gap-6 flex-col md:flex-row">
-                <div class="flex-[40%]">
-                    <p class="text-4xl text-accent font-bold capitalize font-serif">
+                <div class="flex-1">
+                    <p class="text-6xl text-accent font-bold capitalize font-serif">
                         best furnitures
                         <br />
                         at best price
                     </p>
-                    <p class="py-4">
+                    <p class="py-6">
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Libero modi distinctio possimus.
                         Lorem ipsum
                         dolor sit amet,
                         consectetur
@@ -29,7 +30,7 @@ const App = () => {
                         Sign In
                     </button>
                 </div>
-                <div class="flex-[60%]">
+                <div class="flex-1">
                     <img
                         src={img}
                         alt=""
