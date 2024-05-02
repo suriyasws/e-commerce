@@ -1,17 +1,24 @@
-import React, { useState } from "react";
-import {
-    FaCartPlus,
-    FaUserAlt,
-    FaSearch
-} from "react-icons/fa";
+import React, {
+    useState,
+    useContext
+} from "react";
 import {
     BrowserRouter,
     Routes,
     Route,
     Link
 } from "react-router-dom";
+import { IoSearch } from "react-icons/io5";
+import { HiOutlineShoppingBag } from "react-icons/hi2";
+import { VscAccount } from "react-icons/vsc";
+import { cartcontext } from "../App";
 
-const Navbar = ({ cart }) => {
+
+const Navbar = () => {
+    const { cart } = useContext(
+        cartcontext
+    );
+
     const [menu, setMenu] =
         useState(false);
     const [show, setShow] = useState(1);
@@ -20,7 +27,7 @@ const Navbar = ({ cart }) => {
     };
 
     return (
-        <div className="pt-4 pb-2 ">
+        <div className=" py-2 text-whit">
             <div className="container">
                 <nav className=" flex justify-between items-center">
                     <div className=" flex items-center">
@@ -29,31 +36,15 @@ const Navbar = ({ cart }) => {
                             onClick={
                                 openMenu
                             }
-                        >
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                strokeWidth={
-                                    1.5
-                                }
-                                stroke="currentColor"
-                                className="size-7 stroke-2"
-                            >
-                                {" "}
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-                                />
-                            </svg>
-                        </button>
-                        <div className="font-bold text-2xl text-accent font-serif flex flex-col justify-center items-center">
-                            <span className="">Furnitures</span>
-                            <span className="text-lg">Shop</span>
+                        ></button>
+                        <div className="font-bold text-xl  font-serif flex flex-col gap-0 justify-center items-center text-accent">
+                            Furnitures
+                            <div className="text-sm">
+                                shop
+                            </div>
                         </div>
                     </div>
-                    <div class="space-x-8 txt-lg font-medium hidden md:block">
+                    <div class="space-x-8 txt-lg font-normal hidden md:block">
                         <a
                             href=""
                             class=""
@@ -83,7 +74,7 @@ const Navbar = ({ cart }) => {
                     <div className="flex space-x-4 lg:space-x-8 ">
                         <div className="relative">
                             <Link to="/viewcart">
-                                <FaCartPlus className="size-5" />
+                                <HiOutlineShoppingBag className="size-5" />
                             </Link>
                             <span className=" absolute  -top-1/2 -right-1/2  bg-accent text-white rounded-full flex items-center justify-center text-sm text-center size-5">
                                 {
@@ -92,24 +83,14 @@ const Navbar = ({ cart }) => {
                             </span>
                         </div>
                         <span className="">
-                            <FaUserAlt className="size-5" />
+                            <VscAccount className="size-5" />
                         </span>
-                        <FaSearch className="size-5 " />
+                        <Link to="/searchresult">
+                            <IoSearch className="size-5 font-bold" />
+                        </Link>
                     </div>
                 </nav>
-
-                <div className="md:hidden  mt-2 relative fixed">
-                    <input
-                        className="w-full outline-none pl-3 pr-10 h-8 rounded text-gray-800 text-sm"
-                        type="search"
-                        placeholder="Search for products, brands and more"
-                    />
-                    <button className=" bg-gray-300 absolute top-0 right-0  rounded text-gray-500 ">
-                        <FaSearch className="p-1 size-8" />
-                    </button>
-                </div>
             </div>
-
             <div
                 className={`fixed flex w-full h-dvh top-0  transition-all duration-300 ${
                     menu

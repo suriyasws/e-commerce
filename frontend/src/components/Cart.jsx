@@ -32,7 +32,7 @@ const Cart = ({ product, cart,setCart, onIncrement, onDecrement }) => {
               +
             </button>
             <input
-              className='w-[70%] h-8 text-center'
+              className='w-[20%] h-8 text-center'
               type='number'
               onChange={(e) => {
                 setCount(

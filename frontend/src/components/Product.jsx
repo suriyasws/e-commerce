@@ -1,54 +1,115 @@
-import React, { useState, useEffect } from "react";
+import React, {
+    useState,
+    useEffect,
+    useContext
+} from "react";
+import { cartcontext } from "../App";
+import { MdAddShoppingCart } from "react-icons/md";
+import {
+    BrowserRouter,
+    Routes,
+    Route,
+    Link
+} from "react-router-dom";
 
-const App = ({ product, setCart, cart }) => {
-  const [button, setButton] = useState(true);
+const App = ({
+    product,
   
-  useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cart));
-  }, [cart]);
+}) => {
+    const { cart, setCart } =
+        useContext(cartcontext);
+    const [showToast, setShowToast] =
+        useState(false);
 
-  const addToCart = () => {
-    if (cart.every((prod) => prod._id !== product._id)) {
-      setCart((prevCart) => [...prevCart, { ...product, count: 1 }]);
-    }
-    setButton(true);
-  };
+    const [button, setButton] =
+        useState(true);
 
-  const removeFromCart = () => {
-    const updatedCart = cart.filter((prod) => prod._id !== product._id);
-    setCart(updatedCart);
-    setButton(false);
-  };
+    useEffect(() => {
+        localStorage.setItem(
+            "cart",
+            JSON.stringify(cart)
+        );
+    }, [cart]);
 
-  return (
-    <div className='bg-white w-fit p-2 shadow-xl rounded-lg'>
-      <div className='aspect-video rounded-lg'>
-        <img className='object-contain w-full h-full' src={product.imageurl} alt={product.product} />
-      </div>
-      <div className='text-center mt-2 capitalize text-center'>
-        <p>{product.product}</p>
-        <p className='text-sm text-green-600 font-bold'>
-          <span>rs </span>
-          {product.price}
-        </p>
-        {button ? (
-          <button
-            onClick={addToCart}
-            className='w-full rounded-md bg-cyan-700 hover:bg-thistry2 py-1 px-2 mt-2 text-white border border-gray-500 mr-3'
-          >
-            Add to cart
-          </button>
-        ) : (
-          <button
-            onClick={removeFromCart}
-            className='w-full rounded-md bg-red-500 hover:bg-red-400 py-1 px-2 mt-2 text-white border border-gray-500 mr-3'
-          >
-            Remove from cart
-          </button>
-        )}
-      </div>
-    </div>
-  );
+    const addToCart = () => {
+        setShowToast(true);
+        if (
+            cart.every(
+                prod =>
+                    prod._id !==
+                    product._id
+            )
+        ) {
+            setCart(prevCart => [
+                ...prevCart,
+                { ...product, count: 1 }
+            ]);
+        }
+
+        setTimeout(() => {
+            setShowToast(false);
+        }, 3000); // 3000
+    };
+
+    const removeFromCart = () => {
+        const updatedCart = cart.filter(
+            prod =>
+                prod._id !== product._id
+        );
+        setCart(updatedCart);
+        setButton(true);
+    };
+
+    return (
+        <div className="w-fit p-2 shadow-x rounded-lg">
+            {showToast && (
+                <div className="bg-green-500 text-white py-2 px-4 rounded fixed top-[10%] left-0 right-0 w-3/4 md:w-1/2 mx-auto">
+                    <p class="text-white text-center">
+                        Item added to
+                        cart
+                    </p>
+                </div>
+            )}
+            <div className=" rounded-md p-4 bg-slate-100">
+                <img
+                    className="object-contain w-full h-full"
+                    src={
+                        product.imageurl
+                    }
+                    alt={
+                        product.product
+                    }
+                />
+            </div>
+            <div className=" mt-2 capitalize ">
+                <div class="flex justify-between items-center">
+                    <div class="">
+                        <p className="font-mediu text-lg">
+                            {
+                                product.name
+                            }
+                        </p>
+                        <p className="mt-2">
+                            <span>
+                                ₹{" "}
+                            </span>
+                            {
+                                product.price
+                            }
+                        </p>
+                    </div>
+                    <button
+                        class=""
+                        onClick={
+                            addToCart
+                        }
+                    >
+                        <MdAddShoppingCart className="size-7 text-accent" />
+                    </button>
+                </div>
+            </div>
+        </div>
+    );
 };
 
 export default App;

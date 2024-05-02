@@ -1,15 +1,22 @@
 import React from "react";
 import Products from "../components/Products";
-import Hero from "../components/Hero.jsx";
+import LikedProducts from "../components/LikedProducts";
+import Hero from "../components/Hero";
+import Best from "../components/Best";
+import Gallery from "../components/Gallery";
+import Services from "../components/Services";
+import Footer from "../components/Footer";
 
-const App = ({ cart, setCart }) => {
+const App = () => {
     return (
         <>
             <Hero />
-            <Products
-                cart={cart}
-                setCart={setCart}
-            />
+            <LikedProducts />
+            <Best />
+            <Gallery />
+            <Products />
+            <Services />
+            <Footer />
         </>
     );
 };

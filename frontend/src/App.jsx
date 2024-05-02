@@ -1,35 +1,101 @@
-import React, {useState} from 'react';
-import Navbar from './components/Navbar';
+import React, {
+    useState,
+    createContext,
+    useContext
+} from "react";
+import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import SearchResult from "./pages/SearchResult";
 import ViewCart from "./pages/ViewCart";
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import Account from "./pages/Account";
+import Details from "./pages/Details";
+import {
+    BrowserRouter,
+    Routes,
+    Route,
+    Link
+} from "react-router-dom";
+
+export const cartcontext =
+    createContext();
 
 const App = () => {
-  
-  const[cart,setCart]=useState([]);
-  
-  return (
-    <div className='text-[18px]'>
+    const [cart, setCart] = useState(
+        []
+    );
 
-      
-      <BrowserRouter>
-      
-        <Navbar cart={cart}/>
-        
-        <Routes>
-          <Route path='/' element={<Home cart={cart} setCart={setCart}/>}  />
-          
-          <Route path='/searchresult' element={<SearchResult/>}  />
-          
-          <Route path='/viewcart' element={<ViewCart cart={cart} setCart={setCart}/>}/>
-          
-        </Routes>     
-        
-      </BrowserRouter>
-   
-    </div>
-  );
+    return (
+        <div className="md:text-[18px] font-inter">
+            <cartcontext.Provider
+                value={{
+                    cart,
+                    setCart
+                }}
+            >
+                <BrowserRouter>
+                    <Navbar />
+
+                    <Routes>
+                        <Route
+                            path="/furniture.html"
+                            element={
+                                <Home
+                                    cart={
+                                        cart
+                                    }
+                                    setCart={
+                                        setCart
+                                    }
+                                />
+                            }
+                        />
+
+                        <Route
+                            path="/searchresult"
+                            element={
+                                <SearchResult
+                                    cart={
+                                        cart
+                                    }
+                                    setCart={
+                                        setCart
+                                    }
+                                />
+                            }
+                        />
+                        <Route
+                            path="/product"
+                            element={
+                                <Details
+
+                                />
+                            }
+                        />
+                        <Route
+                            path="/viewcart"
+                            element={
+                                <ViewCart
+                                    cart={
+                                        cart
+                                    }
+                                    setCart={
+                                        setCart
+                                    }
+                                />
+                            }
+                        />
+
+                        <Route
+                            path="/user_account"
+                            element={
+                                <Account />
+                            }
+                        />
+                    </Routes>
+                </BrowserRouter>
+            </cartcontext.Provider>
+        </div>
+    );
 };
 
 export default App;
